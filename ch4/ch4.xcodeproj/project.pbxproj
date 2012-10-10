@@ -136,6 +136,7 @@
 		97CFF05A16250CFD005A6312 /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF05916250CFD005A6312 /* spider.png */; };
 		97CFF05D16250D2B005A6312 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CFF05C16250D2B005A6312 /* GameScene.m */; };
 		97CFF06F1625483B005A6312 /* blues.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF06E1625483B005A6312 /* blues.mp3 */; };
+		97CFF07716256DF1005A6312 /* LoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CFF07616256DF1005A6312 /* LoadingScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -404,6 +405,8 @@
 		97CFF05B16250D2B005A6312 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		97CFF05C16250D2B005A6312 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		97CFF06E1625483B005A6312 /* blues.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blues.mp3; sourceTree = "<group>"; };
+		97CFF07516256DF1005A6312 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
+		97CFF07616256DF1005A6312 /* LoadingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +471,8 @@
 				97CFF04716250A14005A6312 /* IntroLayer.m */,
 				97CFF05B16250D2B005A6312 /* GameScene.h */,
 				97CFF05C16250D2B005A6312 /* GameScene.m */,
+				97CFF07516256DF1005A6312 /* LoadingScene.h */,
+				97CFF07616256DF1005A6312 /* LoadingScene.m */,
 				97CFEEC916250A10005A6312 /* Resources */,
 				97CFEEE316250A10005A6312 /* libs */,
 				97CFF03C16250A14005A6312 /* Supporting Files */,
@@ -1021,6 +1026,7 @@
 				97CFF04216250A14005A6312 /* AppDelegate.m in Sources */,
 				97CFF04816250A14005A6312 /* IntroLayer.m in Sources */,
 				97CFF05D16250D2B005A6312 /* GameScene.m in Sources */,
+				97CFF07716256DF1005A6312 /* LoadingScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

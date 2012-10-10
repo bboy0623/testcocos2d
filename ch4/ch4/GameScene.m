@@ -120,7 +120,7 @@
         
         spider.position = CGPointMake(spiderSize.width*i+spiderSize.width*0.5f, winSize.height - spiderSize.height);
         
-        CCLOG(@"spider position %f, %f", spider.position.x, spider.position.y);
+        //CCLOG(@"spider position %f, %f", spider.position.x, spider.position.y);
         
         [spider stopAllActions];
     }
@@ -225,5 +225,30 @@
         [scoreLabel setString:[NSString stringWithFormat:@"%i", score]];
     }
 }
+
+-(void)onEnter
+{
+    CCLOG(@"GameScene onEnter");
+    [super onEnter];
+}
+
+-(void)onExitTransitionDidStart
+{
+    CCLOG(@"GameScene onExitTransitionDidStart");
+    [super onExitTransitionDidStart];
+}
+
+-(void)onEnterTransitionDidFinish
+{
+    CCLOG(@"GameScene onEnterTransitionDidFinish");
+    [super onEnterTransitionDidFinish];
+}
+
+-(void)onExit
+{
+    CCLOG(@"GameScene onExit");
+    [super onExit];
+}
+
 
 @end

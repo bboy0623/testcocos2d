@@ -36,7 +36,9 @@
 // 
 -(void) onEnter
 {
-	[super onEnter];
+    CCLOG(@"IntroLayer onEnter");
+	
+    [super onEnter];
 
 	// ask director for the window size
 	CGSize size = [[CCDirector sharedDirector] winSize];
@@ -56,6 +58,25 @@
 	
 	// In one second transition to the new scene
 	[self scheduleOnce:@selector(makeTransition:) delay:1];
+}
+
+
+-(void)onExitTransitionDidStart
+{
+    CCLOG(@"IntroLayer onExitTransitionDidStart");
+    [super onExitTransitionDidStart];
+}
+
+-(void)onEnterTransitionDidFinish
+{
+    CCLOG(@"IntroLayer onEnterTransitionDidFinish");
+    [super onEnterTransitionDidFinish];
+}
+
+-(void)onExit
+{
+    CCLOG(@"IntroLayer onExit");
+    [super onExit];
 }
 
 -(void) makeTransition:(ccTime)dt
