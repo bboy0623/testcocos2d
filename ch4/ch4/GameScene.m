@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "libs/CocosDenshion/SimpleAudioEngine.h"
 
 @interface GameScene ()
 
@@ -55,6 +56,14 @@
     [self scheduleUpdate];
     [self initSpiders];
     
+    scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Arial" fontSize:32];
+    scoreLabel.position = CGPointMake(winSize.width/2, winSize.height);
+    scoreLabel.anchorPoint = CGPointMake(0.5, 1);
+    [self addChild:scoreLabel z:-1];
+    
+    //audio
+    //[[SimpleAudioEngine sharedEngine]playBackgroundMusic:@"blues.mp3" loop:YES];
+    //[[SimpleAudioEngine sharedEngine]playEffect:@"alien-sfx.caf"];
     
     return self;    
 }
@@ -122,6 +131,9 @@
     
     numSpidersMoved = 0;
     spiderMoveDuration = 4.0;
+    
+    totalTime = 0.0;
+    score = 0;
 }
 
 //选择一个未运动的蜘蛛，运动
@@ -205,6 +217,13 @@
 {
     //CCLOG(@"update");
     [self checkForCollision];
+    
+    totalTime += delta;
+    int curTime = (int)totalTime;
+    if (score < curTime){
+        score = curTime;
+        [scoreLabel setString:[NSString stringWithFormat:@"%i", score]];
+    }
 }
 
 @end

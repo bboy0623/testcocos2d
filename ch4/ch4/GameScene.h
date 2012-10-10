@@ -15,6 +15,11 @@
     CCArray *spiders;
     float spiderMoveDuration;
     int numSpidersMoved;
+        
+    CCLabelTTF *scoreLabel;
+    float totalTime;
+    int score;
+    
 }
 
 +(id)scene;

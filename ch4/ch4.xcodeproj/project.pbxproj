@@ -135,6 +135,7 @@
 		97CFF05716250CE8005A6312 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF05616250CE8005A6312 /* alien.png */; };
 		97CFF05A16250CFD005A6312 /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF05916250CFD005A6312 /* spider.png */; };
 		97CFF05D16250D2B005A6312 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CFF05C16250D2B005A6312 /* GameScene.m */; };
+		97CFF06F1625483B005A6312 /* blues.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97CFF06E1625483B005A6312 /* blues.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -402,6 +403,7 @@
 		97CFF05916250CFD005A6312 /* spider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spider.png; sourceTree = "<group>"; };
 		97CFF05B16250D2B005A6312 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		97CFF05C16250D2B005A6312 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		97CFF06E1625483B005A6312 /* blues.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blues.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,6 +478,7 @@
 		97CFEEC916250A10005A6312 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97CFF06E1625483B005A6312 /* blues.mp3 */,
 				97CFF05916250CFD005A6312 /* spider.png */,
 				97CFF05616250CE8005A6312 /* alien.png */,
 				97CFEECA16250A10005A6312 /* Default.png */,
@@ -903,6 +906,7 @@
 				97CFF02016250A14005A6312 /* ChangeLog in Resources */,
 				97CFF05716250CE8005A6312 /* alien.png in Resources */,
 				97CFF05A16250CFD005A6312 /* spider.png in Resources */,
+				97CFF06F1625483B005A6312 /* blues.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
