@@ -46,7 +46,7 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="ParallaxBackground.h">
+    <ClInclude Include="..\Classes\ParallaxBackground.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -60,7 +60,7 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="ParallaxBackground.cpp">
+    <ClCompile Include="..\Classes\ParallaxBackground.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,7 +4,7 @@
 
 bool ParallaxBackground::init()
 {
-	cocos2d::CCSize screenSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
+	this->screenSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
 
 	//CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
 	//[frameCache addSpriteFramesWithFile:@"game-art.plist"];
