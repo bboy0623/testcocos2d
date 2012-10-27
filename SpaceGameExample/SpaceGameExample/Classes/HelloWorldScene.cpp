@@ -147,6 +147,17 @@ bool HelloWorld::init()
 		_nextShipLaser = 0;
 		this->setTouchEnabled(true) ;
 
+		//Ê¤Àû/Ê§°Ü¼ì²â
+		_gameOver = false;
+		_lives = 3 ;
+		double curTime = getTimeTick() ;
+		_gameOverTime = curTime + 30000 ;
+
+		//music
+		SimpleAudioEngine::sharedEngine()->playBackgroundMusic("SpaceGame.wav",true) ;
+		SimpleAudioEngine::sharedEngine()->preloadEffect("explosion_large.wav") ;
+		SimpleAudioEngine::sharedEngine()->preloadEffect("laser_ship.wav") ;
+
 		//update
 		this->scheduleUpdate();
 
@@ -247,6 +258,8 @@ void HelloWorld::update (float dt)
 			if ( CCRect::CCRectIntersectsRect(shipLaser->boundingBox(), asteroid->boundingBox()) ) {
 				shipLaser->setVisible(false) ;
 				asteroid->setVisible(false) ;
+				//music
+				SimpleAudioEngine::sharedEngine()->playEffect("explosion_large.wav") ;
 				continue ;
 			}
 		}  
@@ -254,7 +267,18 @@ void HelloWorld::update (float dt)
 			asteroid->setVisible(false) ;
 			_ship->runAction( CCBlink::actionWithDuration(1.0, 9)) ;
 			_lives-- ;
+			//music
+			SimpleAudioEngine::sharedEngine()->playEffect("explosion_large.wav") ;
 		}
+	}
+
+	//Ê¤Àû/Ê§°Ü¼ì²â
+	if ( _lives <= 0 ) {
+		_ship->stopAllActions() ;
+		_ship->setVisible(false) ;
+		this->endScene(KENDREASONLOSE) ;
+	} else if ( curTimeMillis >= _gameOverTime ) {
+		this->endScene(KENDREASONWIN) ;
 	}
 }
 
@@ -285,18 +309,21 @@ float HelloWorld::randomValueBetween( float low , float high )
 }
  
 float HelloWorld::getTimeTick() {
-  timeval time;
-  gettimeofday(&time, NULL);
-  unsigned long millisecs = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-  return (float) millisecs;
+	timeval time;
+	gettimeofday(&time, NULL);
+	unsigned long millisecs = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (float) millisecs;
 }
 
 void HelloWorld::setInvisible(CCNode * node) {
-  node->setVisible(false) ;
+	node->setVisible(false) ;
 }
 
 void HelloWorld::ccTouchesBegan(cocos2d::CCSet* touches, cocos2d::CCEvent* event)
 {
+	//music
+	SimpleAudioEngine::sharedEngine()->playEffect("laser_ship.wav") ;
+
     CCSize winSize = CCDirector::sharedDirector()->getWinSize() ; 
  
     CCSprite *shipLaser = (CCSprite *)_shipLasers->objectAtIndex(_nextShipLaser++);
@@ -310,4 +337,43 @@ void HelloWorld::ccTouchesBegan(cocos2d::CCSet* touches, cocos2d::CCEvent* event
         CCCallFuncN::actionWithTarget(this,callfuncN_selector(HelloWorld::setInvisible)) ,
         NULL  // DO NOT FORGET TO TERMINATE WITH NULL 
         ) ) ; 
+}
+
+void HelloWorld::restartTapped(CCObject* pSender) {
+	CCDirector::sharedDirector()->replaceScene
+		( CCTransitionZoomFlipX::transitionWithDuration(0.5, this->scene()));  
+	// reschedule
+	this->scheduleUpdate() ; 
+}
+ 
+void HelloWorld::endScene( EndReason endReason ) {
+	if ( _gameOver )
+	return ;
+	_gameOver = true ;
+ 
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize() ; 
+	char message[10] = "You Win"  ;
+	if ( endReason == KENDREASONLOSE )
+	strcpy(message,"You Lose") ;
+	CCLabelBMFont * label ;
+	label = CCLabelBMFont::labelWithString(message ,"Arial.fnt" );
+	label->setScale(0.1) ;
+	label->setPosition( ccp( winSize.width/2 , winSize.height*0.6)) ;
+	this->addChild(label) ;  
+ 
+	CCLabelBMFont * restartLabel ;
+	restartLabel = CCLabelBMFont::labelWithString("Restart" ,"Arial.fnt" );
+	CCMenuItemLabel *restartItem = CCMenuItemLabel::itemWithLabel(restartLabel, this, menu_selector(HelloWorld::restartTapped) );  
+	restartItem->setScale(0.1) ;
+	restartItem->setPosition( ccp( winSize.width/2 , winSize.height*0.4)) ;
+ 
+	CCMenu *menu = CCMenu::menuWithItems(restartItem, NULL);
+	menu->setPosition(CCPointZero);
+	this->addChild(menu) ;
+ 
+	// clear label and menu
+	restartItem->runAction( CCScaleTo::actionWithDuration(0.5, 1.0)) ;
+	label ->runAction( CCScaleTo::actionWithDuration(0.5, 1.0)) ;
+	// Terminate update callback
+	this->unscheduleUpdate() ;
 }

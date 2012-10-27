@@ -16,6 +16,13 @@
 
 USING_NS_CC;
 
+using namespace CocosDenshion ;
+
+typedef enum {
+  KENDREASONWIN,
+  KENDREASONLOSE
+} EndReason;
+
 class HelloWorld : public cocos2d::CCLayer
 {
 public:
@@ -71,6 +78,13 @@ private:
 	int _lives ;
 
 	//Ê¤Àû/Ê§°Ü¼ì²â
+private:
+	double _gameOverTime ;
+	bool _gameOver ;
+	void endScene( EndReason endReason ) ;
+	void restartTapped(CCObject* pSender) ;
+
+
 
 };
 
